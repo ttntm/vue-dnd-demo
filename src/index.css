@@ -1,0 +1,261 @@
+@tailwind base;
+
+@tailwind components;
+
+/* nunito-regular - latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 400;
+  src: local('Nunito Regular'), local('Nunito-Regular'),
+    url('./assets/fonts/nunito-v12-latin-regular.woff2') format('woff2'),
+    url('./assets/fonts/nunito-v12-latin-regular.woff') format('woff');
+}
+/* nunito-600 - latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  src: local('Nunito SemiBold'), local('Nunito-SemiBold'),
+    url('./assets/fonts/nunito-v12-latin-600.woff2') format('woff2'),
+    url('./assets/fonts/nunito-v12-latin-600.woff') format('woff');
+}
+/* nunito-700 - latin */
+@font-face {
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 700;
+  src: local('Nunito Bold'), local('Nunito-Bold'),
+    url('./assets/fonts/nunito-v12-latin-700.woff2') format('woff2'),
+    url('./assets/fonts/nunito-v12-latin-700.woff') format('woff');
+}
+
+/* ---------- NORMALIZE ---------- */
+
+* {
+  -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+  -webkit-tap-highlight-color: transparent;
+  @apply outline-none;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+    scroll-behavior: auto !important;
+  }
+}
+
+*:focus {
+  @apply outline-none shadow-outline;
+}
+
+body,
+html {
+  @apply text-blue-600;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  @apply tracking-wide text-blue-500 font-bold mt-0 mb-4;
+}
+
+h1 {
+  font-size: calc(1.375rem + 1.5vw);
+}
+
+@media (min-width: 1200px) {
+  h1 {
+    @apply text-4xl;
+  }
+}
+
+h2, .h2 {
+  font-size: calc(1.325rem + 0.9vw);
+}
+
+@media (min-width: 1200px) {
+  h2 {
+    @apply text-3xl;
+  }
+}
+
+h3, .h3 {
+  font-size: calc(1.3rem + 0.6vw);
+}
+
+@media (min-width: 1200px) {
+  h3, .h3 {
+    @apply text-2xl;
+  }
+  h4, .h4 {
+    @apply text-xl;
+  }
+}
+
+ol,
+ul {
+  @apply pl-8;
+}
+
+ul {
+  list-style-type: square;
+}
+
+ol {
+  list-style-type: decimal;
+}
+
+p,
+ol,
+ul,
+dl {
+  @apply mt-0 mb-4;
+}
+
+ol ol,
+ul ul,
+ol ul,
+ul ol {
+  @apply mb-0;
+}
+
+b,
+strong {
+  @apply font-bold;
+}
+
+i,
+em {
+  @apply italic;
+}
+
+small {
+  @apply text-sm;
+}
+
+hr {
+  @apply border-gray-500 my-8;
+}
+
+svg {
+  @apply pointer-events-none;
+}
+
+/* ---------- BUTTONS ---------- */
+
+.btn {
+  @apply inline-block font-bold rounded-lg shadow-sm px-6 py-2;
+}
+
+.btn:focus {
+  @apply outline-none shadow-outline;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+}
+
+.btn-gray {
+  @apply bg-gray-500 text-blue-500;
+}
+
+.btn-gray:focus {
+  @apply bg-cool-gray-500;
+}
+
+.btn-outline,
+.modal-btn {
+  @apply block font-bold border border-blue-500 text-blue-500 bg-transparent rounded-lg shadow-sm;
+}
+
+.btn-outline:focus,
+.modal-btn:focus {
+  @apply bg-cool-gray-500 border-cool-gray-500 shadow-none;
+}
+
+.btn-outline:focus,
+.modal-btn:focus {
+  @apply outline-none shadow-outline;
+}
+
+/* ---------- INPUTS & FORM STYLES ---------- */
+
+.form-control {
+  @apply w-full block border border-gray-600 rounded-lg px-3 py-1;
+}
+
+.form-group {
+  @apply flex flex-col border-b border-cool-gray-500 mb-8;
+}
+
+.form-group label {
+  @apply tracking-wide text-sm text-blue-600 mb-1;
+}
+
+.auth-form-control {
+  @apply bg-gray-500 px-3 py-1;
+}
+
+.auth-form-control:focus {
+  outline: 0;
+  @apply shadow-outline bg-white;
+}
+
+.error { color: salmon; }
+
+/* ---------- TRANSITIONS ---------- */
+
+.fade-enter-active, 
+.fade-leave-active { 
+  transition: opacity 0.25s ease-in-out;
+}
+
+.fade-enter-from, 
+.fade-leave-to { 
+  opacity: 0;
+}
+
+.list-enter-active, 
+.list-leave-active {
+  transition: all .5s;
+}
+
+.list-enter-from, 
+.list-leave-to {
+  opacity: 0;
+}
+
+.list-move {
+  transition: transform .5s;
+}
+
+/* ---------- HOVER STYLES ---------- */
+/* Styles that shouldn't trigger on touch devices where :hover doesn't work properly = doesn't unset itself */
+/* See: https://stackoverflow.com/questions/23885255/how-to-remove-ignore-hover-css-style-on-touch-devices */
+
+@media (hover: hover) and (pointer: fine) {
+  *:hover {
+    transition: all 0.35s ease;
+  }
+
+  .logo:hover {
+    @apply opacity-75;
+  }
+
+  .btn-gray:hover {
+    @apply bg-cool-gray-500;
+  }
+
+  .btn-outline:hover,
+  .modal-btn:hover {
+    @apply bg-cool-gray-500 border-cool-gray-500 shadow-none;
+  }
+}
+
+@tailwind utilities;
